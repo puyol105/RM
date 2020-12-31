@@ -1,0 +1,1824 @@
+#
+# Default settings for the simulation
+#
+
+## Scenario settings
+# name: The value set for this is the name we give for current simulation.
+Scenario.name = default_scenario
+Scenario.simulateConnections = true
+# updateInterval: Update Interval This defines the interval in which the
+# update() function in the MessageRouter.java file has to be called.
+# As default #it is set to 0.1s.
+Scenario.updateInterval = 0.1
+# endTime: The time for which the scenario is to be simulated. 10200s == 2.83h
+Scenario.endTime = 10200
+
+## Interface-specific settings:
+# type : which interface class the interface belongs to
+# For different types, the sub-parameters are interface-specific
+# For SimpleBroadcastInterface, the parameters are:
+# transmitSpeed : transmit speed of the interface (bytes per second)
+# transmitRange : range of the interface (meters)
+
+# "Bluetooth" interface for all nodes
+# type : which interface class the interface belongs to.
+btInterface.type = SimpleBroadcastInterface
+# Transmit speed of 2 Mbps = 250kBps
+# Pode ir até 50 Mbps em v5.0
+btInterface.transmitSpeed = 250k
+btInterface.transmitRange = 100
+
+# High speed, long range, interface
+# highspeedInterface.type = SimpleBroadcastInterface
+# highspeedInterface.transmitSpeed = 10M
+# highspeedInterface.transmitRange = 1000
+
+# Define 106 different node groups
+# nrofHostGroups: Define the number of different node groups
+# 100 Sensors + 5 Portals + 1 Car group
+Scenario.nrofHostGroups = 106
+
+## Group-specific settings:
+# groupID : Group's identifier. Used as the prefix of host names
+# nrofHosts: number of hosts in the group
+# movementModel: movement model of the hosts (valid class name from movement package)
+# waitTime: minimum and maximum wait times (seconds) after reaching destination
+# speed: minimum and maximum speeds (m/s) when moving on a path
+# bufferSize: size of the message buffer (bytes)
+# router: router used to route messages (valid class name from routing package)
+# activeTimes: Time intervals when the nodes in the group are active (start1, end1, start2, end2, ...)
+# msgTtl : TTL (minutes) of the messages created by this host group, default=infinite
+
+## Group and movement model specific settings
+# pois: Points Of Interest indexes and probabilities (poiIndex1, poiProb1, poiIndex2, poiProb2, ... )
+#       for ShortestPathMapBasedMovement
+# okMaps : which map nodes are OK for the group (map file indexes), default=all
+#          for all MapBasedMovent models
+# routeFile: route's file path - for MapRouteMovement
+# routeType: route's type - for MapRouteMovement
+
+
+# Common settings for all groups
+# Group.movementModel = ShortestPathMapBasedMovement
+Group.router = EpidemicOracleRouter
+Group.bufferSize = 5M
+Group.waitTime = 0, 120 
+# All nodes have the bluetooth interface
+Group.nrofInterfaces = 1
+Group.interface1 = btInterface
+# Walking speeds
+Group.speed = 0.5, 1.5
+# TODO: Mudar para testar
+# Message TTL of 60 minutes (1 hour)
+Group.msgTtl = 60
+
+
+# SENSORES
+
+# group1 (sensors) specific settings
+# groupID : Group's identifier. Used as the prefix of host names
+Group1.groupID = s
+# nrofHosts: number of hosts in the group
+Group1.nrofHosts=1
+# movementModel: movement model of the hosts (valid class name from #movement package)
+Group1.movementModel = StationaryMovement
+# nodeLocation: Necessary field for StationaryMovement, which gives us #the location of the host.
+
+Group1.nodeLocation = 1350,1050
+
+# routeFile: route's file path - for MapRouteMovement
+Group1.routeFile = data/Braga.wkt
+Group1.routeType = 1
+# nrofInterfaces: Number of interfaces per host
+Group1.nrofInterfaces = 1
+# Type of interface
+Group1.interface1 = btInterface
+
+Group2.groupID = s
+Group2.nrofHosts=1
+Group2.movementModel = StationaryMovement
+Group2.nodeLocation = 86,1068
+Group2.routeFile = data/Braga.wkt
+Group2.routeType = 1
+Group2.nrofInterfaces = 1
+Group2.interface1 = btInterface
+
+Group3.groupID = s
+Group3.nrofHosts=1
+Group3.movementModel = StationaryMovement
+Group3.nodeLocation = 1814,1206
+Group3.routeFile = data/Braga.wkt
+Group3.routeType = 1
+Group3.nrofInterfaces = 1
+Group3.interface1 = btInterface
+
+Group4.groupID = s
+Group4.nrofHosts=1
+Group4.movementModel = StationaryMovement
+Group4.nodeLocation = 309,1402
+Group4.routeFile = data/Braga.wkt
+Group4.routeType = 1
+Group4.nrofInterfaces = 1
+Group4.interface1 = btInterface
+
+Group5.groupID = s
+Group5.nrofHosts=1
+Group5.movementModel = StationaryMovement
+Group5.nodeLocation = 2069,1673
+Group5.routeFile = data/Braga.wkt
+Group5.routeType = 1
+Group5.nrofInterfaces = 1
+Group5.interface1 = btInterface
+
+Group6.groupID = s
+Group6.nrofHosts=1
+Group6.movementModel = StationaryMovement
+Group6.nodeLocation = 2490,1085
+Group6.routeFile = data/Braga.wkt
+Group6.routeType = 1
+Group6.nrofInterfaces = 1
+Group6.interface1 = btInterface
+
+Group7.groupID = s
+Group7.nrofHosts=1
+Group7.movementModel = StationaryMovement
+Group7.nodeLocation = 2596,122
+Group7.routeFile = data/Braga.wkt
+Group7.routeType = 1
+Group7.nrofInterfaces = 1
+Group7.interface1 = btInterface
+
+Group8.groupID = s
+Group8.nrofHosts=1
+Group8.movementModel = StationaryMovement
+Group8.nodeLocation = 1266,382
+Group8.routeFile = data/Braga.wkt
+Group8.routeType = 1
+Group8.nrofInterfaces = 1
+Group8.interface1 = btInterface
+
+Group9.groupID = s
+Group9.nrofHosts=1
+Group9.movementModel = StationaryMovement
+Group9.nodeLocation = 1508,1983
+Group9.routeFile = data/Braga.wkt
+Group9.routeType = 1
+Group9.nrofInterfaces = 1
+Group9.interface1 = btInterface
+
+Group10.groupID = s
+Group10.nrofHosts=1
+Group10.movementModel = StationaryMovement
+Group10.nodeLocation = 89,801
+Group10.routeFile = data/Braga.wkt
+Group10.routeType = 1
+Group10.nrofInterfaces = 1
+Group10.interface1 = btInterface
+
+Group11.groupID = s
+Group11.nrofHosts=1
+Group11.movementModel = StationaryMovement
+Group11.nodeLocation = 82,880
+Group11.routeFile = data/Braga.wkt
+Group11.routeType = 1
+Group11.nrofInterfaces = 1
+Group11.interface1 = btInterface
+
+Group12.groupID = s
+Group12.nrofHosts=1
+Group12.movementModel = StationaryMovement
+Group12.nodeLocation = 2150,256
+Group12.routeFile = data/Braga.wkt
+Group12.routeType = 1
+Group12.nrofInterfaces = 1
+Group12.interface1 = btInterface
+
+Group13.groupID = s
+Group13.nrofHosts=1
+Group13.movementModel = StationaryMovement
+Group13.nodeLocation = 1606,281
+Group13.routeFile = data/Braga.wkt
+Group13.routeType = 1
+Group13.nrofInterfaces = 1
+Group13.interface1 = btInterface
+
+Group14.groupID = s
+Group14.nrofHosts=1
+Group14.movementModel = StationaryMovement
+Group14.nodeLocation = 2672,1070
+Group14.routeFile = data/Braga.wkt
+Group14.routeType = 1
+Group14.nrofInterfaces = 1
+Group14.interface1 = btInterface
+
+Group15.groupID = s
+Group15.nrofHosts=1
+Group15.movementModel = StationaryMovement
+Group15.nodeLocation = 685,31
+Group15.routeFile = data/Braga.wkt
+Group15.routeType = 1
+Group15.nrofInterfaces = 1
+Group15.interface1 = btInterface
+
+Group16.groupID = s
+Group16.nrofHosts=1
+Group16.movementModel = StationaryMovement
+Group16.nodeLocation = 1748,1558
+Group16.routeFile = data/Braga.wkt
+Group16.routeType = 1
+Group16.nrofInterfaces = 1
+Group16.interface1 = btInterface
+
+Group17.groupID = s
+Group17.nrofHosts=1
+Group17.movementModel = StationaryMovement
+Group17.nodeLocation = 2251,1145
+Group17.routeFile = data/Braga.wkt
+Group17.routeType = 1
+Group17.nrofInterfaces = 1
+Group17.interface1 = btInterface
+
+Group18.groupID = s
+Group18.nrofHosts=1
+Group18.movementModel = StationaryMovement
+Group18.nodeLocation = 2470,1556
+Group18.routeFile = data/Braga.wkt
+Group18.routeType = 1
+Group18.nrofInterfaces = 1
+Group18.interface1 = btInterface
+
+Group19.groupID = s
+Group19.nrofHosts=1
+Group19.movementModel = StationaryMovement
+Group19.nodeLocation = 121,1421
+Group19.routeFile = data/Braga.wkt
+Group19.routeType = 1
+Group19.nrofInterfaces = 1
+Group19.interface1 = btInterface
+
+Group20.groupID = s
+Group20.nrofHosts=1
+Group20.movementModel = StationaryMovement
+Group20.nodeLocation = 946,270
+Group20.routeFile = data/Braga.wkt
+Group20.routeType = 1
+Group20.nrofInterfaces = 1
+Group20.interface1 = btInterface
+
+Group21.groupID = s
+Group21.nrofHosts=1
+Group21.movementModel = StationaryMovement
+Group21.nodeLocation = 2566,1152
+Group21.routeFile = data/Braga.wkt
+Group21.routeType = 1
+Group21.nrofInterfaces = 1
+Group21.interface1 = btInterface
+
+Group22.groupID = s
+Group22.nrofHosts=1
+Group22.movementModel = StationaryMovement
+Group22.nodeLocation = 2416,1796
+Group22.routeFile = data/Braga.wkt
+Group22.routeType = 1
+Group22.nrofInterfaces = 1
+Group22.interface1 = btInterface
+
+Group23.groupID = s
+Group23.nrofHosts=1
+Group23.movementModel = StationaryMovement
+Group23.nodeLocation = 1510,1544
+Group23.routeFile = data/Braga.wkt
+Group23.routeType = 1
+Group23.nrofInterfaces = 1
+Group23.interface1 = btInterface
+
+Group24.groupID = s
+Group24.nrofHosts=1
+Group24.movementModel = StationaryMovement
+Group24.nodeLocation = 1841,1196
+Group24.routeFile = data/Braga.wkt
+Group24.routeType = 1
+Group24.nrofInterfaces = 1
+Group24.interface1 = btInterface
+
+Group25.groupID = s
+Group25.nrofHosts=1
+Group25.movementModel = StationaryMovement
+Group25.nodeLocation = 289,1577
+Group25.routeFile = data/Braga.wkt
+Group25.routeType = 1
+Group25.nrofInterfaces = 1
+Group25.interface1 = btInterface
+
+Group26.groupID = s
+Group26.nrofHosts=1
+Group26.movementModel = StationaryMovement
+Group26.nodeLocation = 492,867
+Group26.routeFile = data/Braga.wkt
+Group26.routeType = 1
+Group26.nrofInterfaces = 1
+Group26.interface1 = btInterface
+
+Group27.groupID = s
+Group27.nrofHosts=1
+Group27.movementModel = StationaryMovement
+Group27.nodeLocation = 135,271
+Group27.routeFile = data/Braga.wkt
+Group27.routeType = 1
+Group27.nrofInterfaces = 1
+Group27.interface1 = btInterface
+
+Group28.groupID = s
+Group28.nrofHosts=1
+Group28.movementModel = StationaryMovement
+Group28.nodeLocation = 331,247
+Group28.routeFile = data/Braga.wkt
+Group28.routeType = 1
+Group28.nrofInterfaces = 1
+Group28.interface1 = btInterface
+
+Group29.groupID = s
+Group29.nrofHosts=1
+Group29.movementModel = StationaryMovement
+Group29.nodeLocation = 2676,692
+Group29.routeFile = data/Braga.wkt
+Group29.routeType = 1
+Group29.nrofInterfaces = 1
+Group29.interface1 = btInterface
+
+Group30.groupID = s
+Group30.nrofHosts=1
+Group30.movementModel = StationaryMovement
+Group30.nodeLocation = 44,1920
+Group30.routeFile = data/Braga.wkt
+Group30.routeType = 1
+Group30.nrofInterfaces = 1
+Group30.interface1 = btInterface
+
+Group31.groupID = s
+Group31.nrofHosts=1
+Group31.movementModel = StationaryMovement
+Group31.nodeLocation = 427,1345
+Group31.routeFile = data/Braga.wkt
+Group31.routeType = 1
+Group31.nrofInterfaces = 1
+Group31.interface1 = btInterface
+
+Group32.groupID = s
+Group32.nrofHosts=1
+Group32.movementModel = StationaryMovement
+Group32.nodeLocation = 1820,1420
+Group32.routeFile = data/Braga.wkt
+Group32.routeType = 1
+Group32.nrofInterfaces = 1
+Group32.interface1 = btInterface
+
+Group33.groupID = s
+Group33.nrofHosts=1
+Group33.movementModel = StationaryMovement
+Group33.nodeLocation = 1348,1756
+Group33.routeFile = data/Braga.wkt
+Group33.routeType = 1
+Group33.nrofInterfaces = 1
+Group33.interface1 = btInterface
+
+Group34.groupID = s
+Group34.nrofHosts=1
+Group34.movementModel = StationaryMovement
+Group34.nodeLocation = 2186,493
+Group34.routeFile = data/Braga.wkt
+Group34.routeType = 1
+Group34.nrofInterfaces = 1
+Group34.interface1 = btInterface
+
+Group35.groupID = s
+Group35.nrofHosts=1
+Group35.movementModel = StationaryMovement
+Group35.nodeLocation = 2091,1586
+Group35.routeFile = data/Braga.wkt
+Group35.routeType = 1
+Group35.nrofInterfaces = 1
+Group35.interface1 = btInterface
+
+Group36.groupID = s
+Group36.nrofHosts=1
+Group36.movementModel = StationaryMovement
+Group36.nodeLocation = 960,945
+Group36.routeFile = data/Braga.wkt
+Group36.routeType = 1
+Group36.nrofInterfaces = 1
+Group36.interface1 = btInterface
+
+Group37.groupID = s
+Group37.nrofHosts=1
+Group37.movementModel = StationaryMovement
+Group37.nodeLocation = 2011,1971
+Group37.routeFile = data/Braga.wkt
+Group37.routeType = 1
+Group37.nrofInterfaces = 1
+Group37.interface1 = btInterface
+
+Group38.groupID = s
+Group38.nrofHosts=1
+Group38.movementModel = StationaryMovement
+Group38.nodeLocation = 2561,788
+Group38.routeFile = data/Braga.wkt
+Group38.routeType = 1
+Group38.nrofInterfaces = 1
+Group38.interface1 = btInterface
+
+Group39.groupID = s
+Group39.nrofHosts=1
+Group39.movementModel = StationaryMovement
+Group39.nodeLocation = 2500,718
+Group39.routeFile = data/Braga.wkt
+Group39.routeType = 1
+Group39.nrofInterfaces = 1
+Group39.interface1 = btInterface
+
+Group40.groupID = s
+Group40.nrofHosts=1
+Group40.movementModel = StationaryMovement
+Group40.nodeLocation = 1983,740
+Group40.routeFile = data/Braga.wkt
+Group40.routeType = 1
+Group40.nrofInterfaces = 1
+Group40.interface1 = btInterface
+
+Group41.groupID = s
+Group41.nrofHosts=1
+Group41.movementModel = StationaryMovement
+Group41.nodeLocation = 1353,756
+Group41.routeFile = data/Braga.wkt
+Group41.routeType = 1
+Group41.nrofInterfaces = 1
+Group41.interface1 = btInterface
+
+Group42.groupID = s
+Group42.nrofHosts=1
+Group42.movementModel = StationaryMovement
+Group42.nodeLocation = 883,405
+Group42.routeFile = data/Braga.wkt
+Group42.routeType = 1
+Group42.nrofInterfaces = 1
+Group42.interface1 = btInterface
+
+Group43.groupID = s
+Group43.nrofHosts=1
+Group43.movementModel = StationaryMovement
+Group43.nodeLocation = 2416,1606
+Group43.routeFile = data/Braga.wkt
+Group43.routeType = 1
+Group43.nrofInterfaces = 1
+Group43.interface1 = btInterface
+
+Group44.groupID = s
+Group44.nrofHosts=1
+Group44.movementModel = StationaryMovement
+Group44.nodeLocation = 950,455
+Group44.routeFile = data/Braga.wkt
+Group44.routeType = 1
+Group44.nrofInterfaces = 1
+Group44.interface1 = btInterface
+
+Group45.groupID = s
+Group45.nrofHosts=1
+Group45.movementModel = StationaryMovement
+Group45.nodeLocation = 2360,845
+Group45.routeFile = data/Braga.wkt
+Group45.routeType = 1
+Group45.nrofInterfaces = 1
+Group45.interface1 = btInterface
+
+Group46.groupID = s
+Group46.nrofHosts=1
+Group46.movementModel = StationaryMovement
+Group46.nodeLocation = 1195,1898
+Group46.routeFile = data/Braga.wkt
+Group46.routeType = 1
+Group46.nrofInterfaces = 1
+Group46.interface1 = btInterface
+
+Group47.groupID = s
+Group47.nrofHosts=1
+Group47.movementModel = StationaryMovement
+Group47.nodeLocation = 508,528
+Group47.routeFile = data/Braga.wkt
+Group47.routeType = 1
+Group47.nrofInterfaces = 1
+Group47.interface1 = btInterface
+
+Group48.groupID = s
+Group48.nrofHosts=1
+Group48.movementModel = StationaryMovement
+Group48.nodeLocation = 487,1309
+Group48.routeFile = data/Braga.wkt
+Group48.routeType = 1
+Group48.nrofInterfaces = 1
+Group48.interface1 = btInterface
+
+Group49.groupID = s
+Group49.nrofHosts=1
+Group49.movementModel = StationaryMovement
+Group49.nodeLocation = 48,1945
+Group49.routeFile = data/Braga.wkt
+Group49.routeType = 1
+Group49.nrofInterfaces = 1
+Group49.interface1 = btInterface
+
+Group50.groupID = s
+Group50.nrofHosts=1
+Group50.movementModel = StationaryMovement
+Group50.nodeLocation = 1048,135
+Group50.routeFile = data/Braga.wkt
+Group50.routeType = 1
+Group50.nrofInterfaces = 1
+Group50.interface1 = btInterface
+
+Group51.groupID = s
+Group51.nrofHosts=1
+Group51.movementModel = StationaryMovement
+Group51.nodeLocation = 1248,1441
+Group51.routeFile = data/Braga.wkt
+Group51.routeType = 1
+Group51.nrofInterfaces = 1
+Group51.interface1 = btInterface
+
+Group52.groupID = s
+Group52.nrofHosts=1
+Group52.movementModel = StationaryMovement
+Group52.nodeLocation = 2238,944
+Group52.routeFile = data/Braga.wkt
+Group52.routeType = 1
+Group52.nrofInterfaces = 1
+Group52.interface1 = btInterface
+
+Group53.groupID = s
+Group53.nrofHosts=1
+Group53.movementModel = StationaryMovement
+Group53.nodeLocation = 826,1721
+Group53.routeFile = data/Braga.wkt
+Group53.routeType = 1
+Group53.nrofInterfaces = 1
+Group53.interface1 = btInterface
+
+Group54.groupID = s
+Group54.nrofHosts=1
+Group54.movementModel = StationaryMovement
+Group54.nodeLocation = 1802,624
+Group54.routeFile = data/Braga.wkt
+Group54.routeType = 1
+Group54.nrofInterfaces = 1
+Group54.interface1 = btInterface
+
+Group55.groupID = s
+Group55.nrofHosts=1
+Group55.movementModel = StationaryMovement
+Group55.nodeLocation = 1521,1615
+Group55.routeFile = data/Braga.wkt
+Group55.routeType = 1
+Group55.nrofInterfaces = 1
+Group55.interface1 = btInterface
+
+Group56.groupID = s
+Group56.nrofHosts=1
+Group56.movementModel = StationaryMovement
+Group56.nodeLocation = 1136,387
+Group56.routeFile = data/Braga.wkt
+Group56.routeType = 1
+Group56.nrofInterfaces = 1
+Group56.interface1 = btInterface
+
+Group57.groupID = s
+Group57.nrofHosts=1
+Group57.movementModel = StationaryMovement
+Group57.nodeLocation = 1280,723
+Group57.routeFile = data/Braga.wkt
+Group57.routeType = 1
+Group57.nrofInterfaces = 1
+Group57.interface1 = btInterface
+
+Group58.groupID = s
+Group58.nrofHosts=1
+Group58.movementModel = StationaryMovement
+Group58.nodeLocation = 1661,1150
+Group58.routeFile = data/Braga.wkt
+Group58.routeType = 1
+Group58.nrofInterfaces = 1
+Group58.interface1 = btInterface
+
+Group59.groupID = s
+Group59.nrofHosts=1
+Group59.movementModel = StationaryMovement
+Group59.nodeLocation = 1798,320
+Group59.routeFile = data/Braga.wkt
+Group59.routeType = 1
+Group59.nrofInterfaces = 1
+Group59.interface1 = btInterface
+
+Group60.groupID = s
+Group60.nrofHosts=1
+Group60.movementModel = StationaryMovement
+Group60.nodeLocation = 1529,1403
+Group60.routeFile = data/Braga.wkt
+Group60.routeType = 1
+Group60.nrofInterfaces = 1
+Group60.interface1 = btInterface
+
+Group61.groupID = s
+Group61.nrofHosts=1
+Group61.movementModel = StationaryMovement
+Group61.nodeLocation = 1326,756
+Group61.routeFile = data/Braga.wkt
+Group61.routeType = 1
+Group61.nrofInterfaces = 1
+Group61.interface1 = btInterface
+
+Group62.groupID = s
+Group62.nrofHosts=1
+Group62.movementModel = StationaryMovement
+Group62.nodeLocation = 1967,2085
+Group62.routeFile = data/Braga.wkt
+Group62.routeType = 1
+Group62.nrofInterfaces = 1
+Group62.interface1 = btInterface
+
+Group63.groupID = s
+Group63.nrofHosts=1
+Group63.movementModel = StationaryMovement
+Group63.nodeLocation = 1605,1146
+Group63.routeFile = data/Braga.wkt
+Group63.routeType = 1
+Group63.nrofInterfaces = 1
+Group63.interface1 = btInterface
+
+Group64.groupID = s
+Group64.nrofHosts=1
+Group64.movementModel = StationaryMovement
+Group64.nodeLocation = 1835,1320
+Group64.routeFile = data/Braga.wkt
+Group64.routeType = 1
+Group64.nrofInterfaces = 1
+Group64.interface1 = btInterface
+
+Group65.groupID = s
+Group65.nrofHosts=1
+Group65.movementModel = StationaryMovement
+Group65.nodeLocation = 569,994
+Group65.routeFile = data/Braga.wkt
+Group65.routeType = 1
+Group65.nrofInterfaces = 1
+Group65.interface1 = btInterface
+
+Group66.groupID = s
+Group66.nrofHosts=1
+Group66.movementModel = StationaryMovement
+Group66.nodeLocation = 1935,173
+Group66.routeFile = data/Braga.wkt
+Group66.routeType = 1
+Group66.nrofInterfaces = 1
+Group66.interface1 = btInterface
+
+Group67.groupID = s
+Group67.nrofHosts=1
+Group67.movementModel = StationaryMovement
+Group67.nodeLocation = 333,434
+Group67.routeFile = data/Braga.wkt
+Group67.routeType = 1
+Group67.nrofInterfaces = 1
+Group67.interface1 = btInterface
+
+Group68.groupID = s
+Group68.nrofHosts=1
+Group68.movementModel = StationaryMovement
+Group68.nodeLocation = 2377,1498
+Group68.routeFile = data/Braga.wkt
+Group68.routeType = 1
+Group68.nrofInterfaces = 1
+Group68.interface1 = btInterface
+
+Group69.groupID = s
+Group69.nrofHosts=1
+Group69.movementModel = StationaryMovement
+Group69.nodeLocation = 870,1725
+Group69.routeFile = data/Braga.wkt
+Group69.routeType = 1
+Group69.nrofInterfaces = 1
+Group69.interface1 = btInterface
+
+Group70.groupID = s
+Group70.nrofHosts=1
+Group70.movementModel = StationaryMovement
+Group70.nodeLocation = 2628,1371
+Group70.routeFile = data/Braga.wkt
+Group70.routeType = 1
+Group70.nrofInterfaces = 1
+Group70.interface1 = btInterface
+
+Group71.groupID = s
+Group71.nrofHosts=1
+Group71.movementModel = StationaryMovement
+Group71.nodeLocation = 705,1239
+Group71.routeFile = data/Braga.wkt
+Group71.routeType = 1
+Group71.nrofInterfaces = 1
+Group71.interface1 = btInterface
+
+Group72.groupID = s
+Group72.nrofHosts=1
+Group72.movementModel = StationaryMovement
+Group72.nodeLocation = 2564,1362
+Group72.routeFile = data/Braga.wkt
+Group72.routeType = 1
+Group72.nrofInterfaces = 1
+Group72.interface1 = btInterface
+
+Group73.groupID = s
+Group73.nrofHosts=1
+Group73.movementModel = StationaryMovement
+Group73.nodeLocation = 1226,1426
+Group73.routeFile = data/Braga.wkt
+Group73.routeType = 1
+Group73.nrofInterfaces = 1
+Group73.interface1 = btInterface
+
+Group74.groupID = s
+Group74.nrofHosts=1
+Group74.movementModel = StationaryMovement
+Group74.nodeLocation = 701,2044
+Group74.routeFile = data/Braga.wkt
+Group74.routeType = 1
+Group74.nrofInterfaces = 1
+Group74.interface1 = btInterface
+
+Group75.groupID = s
+Group75.nrofHosts=1
+Group75.movementModel = StationaryMovement
+Group75.nodeLocation = 1856,892
+Group75.routeFile = data/Braga.wkt
+Group75.routeType = 1
+Group75.nrofInterfaces = 1
+Group75.interface1 = btInterface
+
+Group76.groupID = s
+Group76.nrofHosts=1
+Group76.movementModel = StationaryMovement
+Group76.nodeLocation = 2204,663
+Group76.routeFile = data/Braga.wkt
+Group76.routeType = 1
+Group76.nrofInterfaces = 1
+Group76.interface1 = btInterface
+
+Group77.groupID = s
+Group77.nrofHosts=1
+Group77.movementModel = StationaryMovement
+Group77.nodeLocation = 397,298
+Group77.routeFile = data/Braga.wkt
+Group77.routeType = 1
+Group77.nrofInterfaces = 1
+Group77.interface1 = btInterface
+
+Group78.groupID = s
+Group78.nrofHosts=1
+Group78.movementModel = StationaryMovement
+Group78.nodeLocation = 459,1808
+Group78.routeFile = data/Braga.wkt
+Group78.routeType = 1
+Group78.nrofInterfaces = 1
+Group78.interface1 = btInterface
+
+Group79.groupID = s
+Group79.nrofHosts=1
+Group79.movementModel = StationaryMovement
+Group79.nodeLocation = 2067,1940
+Group79.routeFile = data/Braga.wkt
+Group79.routeType = 1
+Group79.nrofInterfaces = 1
+Group79.interface1 = btInterface
+
+Group80.groupID = s
+Group80.nrofHosts=1
+Group80.movementModel = StationaryMovement
+Group80.nodeLocation = 1798,186
+Group80.routeFile = data/Braga.wkt
+Group80.routeType = 1
+Group80.nrofInterfaces = 1
+Group80.interface1 = btInterface
+
+Group81.groupID = s
+Group81.nrofHosts=1
+Group81.movementModel = StationaryMovement
+Group81.nodeLocation = 197,1358
+Group81.routeFile = data/Braga.wkt
+Group81.routeType = 1
+Group81.nrofInterfaces = 1
+Group81.interface1 = btInterface
+
+Group82.groupID = s
+Group82.nrofHosts=1
+Group82.movementModel = StationaryMovement
+Group82.nodeLocation = 2175,1020
+Group82.routeFile = data/Braga.wkt
+Group82.routeType = 1
+Group82.nrofInterfaces = 1
+Group82.interface1 = btInterface
+
+Group83.groupID = s
+Group83.nrofHosts=1
+Group83.movementModel = StationaryMovement
+Group83.nodeLocation = 2505,1329
+Group83.routeFile = data/Braga.wkt
+Group83.routeType = 1
+Group83.nrofInterfaces = 1
+Group83.interface1 = btInterface
+
+Group84.groupID = s
+Group84.nrofHosts=1
+Group84.movementModel = StationaryMovement
+Group84.nodeLocation = 2111,724
+Group84.routeFile = data/Braga.wkt
+Group84.routeType = 1
+Group84.nrofInterfaces = 1
+Group84.interface1 = btInterface
+
+Group85.groupID = s
+Group85.nrofHosts=1
+Group85.movementModel = StationaryMovement
+Group85.nodeLocation = 1472,1416
+Group85.routeFile = data/Braga.wkt
+Group85.routeType = 1
+Group85.nrofInterfaces = 1
+Group85.interface1 = btInterface
+
+Group86.groupID = s
+Group86.nrofHosts=1
+Group86.movementModel = StationaryMovement
+Group86.nodeLocation = 1208,2045
+Group86.routeFile = data/Braga.wkt
+Group86.routeType = 1
+Group86.nrofInterfaces = 1
+Group86.interface1 = btInterface
+
+Group87.groupID = s
+Group87.nrofHosts=1
+Group87.movementModel = StationaryMovement
+Group87.nodeLocation = 824,1605
+Group87.routeFile = data/Braga.wkt
+Group87.routeType = 1
+Group87.nrofInterfaces = 1
+Group87.interface1 = btInterface
+
+Group88.groupID = s
+Group88.nrofHosts=1
+Group88.movementModel = StationaryMovement
+Group88.nodeLocation = 1883,268
+Group88.routeFile = data/Braga.wkt
+Group88.routeType = 1
+Group88.nrofInterfaces = 1
+Group88.interface1 = btInterface
+
+Group89.groupID = s
+Group89.nrofHosts=1
+Group89.movementModel = StationaryMovement
+Group89.nodeLocation = 738,593
+Group89.routeFile = data/Braga.wkt
+Group89.routeType = 1
+Group89.nrofInterfaces = 1
+Group89.interface1 = btInterface
+
+Group90.groupID = s
+Group90.nrofHosts=1
+Group90.movementModel = StationaryMovement
+Group90.nodeLocation = 95,1552
+Group90.routeFile = data/Braga.wkt
+Group90.routeType = 1
+Group90.nrofInterfaces = 1
+Group90.interface1 = btInterface
+
+Group91.groupID = s
+Group91.nrofHosts=1
+Group91.movementModel = StationaryMovement
+Group91.nodeLocation = 257,1410
+Group91.routeFile = data/Braga.wkt
+Group91.routeType = 1
+Group91.nrofInterfaces = 1
+Group91.interface1 = btInterface
+
+Group92.groupID = s
+Group92.nrofHosts=1
+Group92.movementModel = StationaryMovement
+Group92.nodeLocation = 1218,2010
+Group92.routeFile = data/Braga.wkt
+Group92.routeType = 1
+Group92.nrofInterfaces = 1
+Group92.interface1 = btInterface
+
+Group93.groupID = s
+Group93.nrofHosts=1
+Group93.movementModel = StationaryMovement
+Group93.nodeLocation = 1490,1739
+Group93.routeFile = data/Braga.wkt
+Group93.routeType = 1
+Group93.nrofInterfaces = 1
+Group93.interface1 = btInterface
+
+Group94.groupID = s
+Group94.nrofHosts=1
+Group94.movementModel = StationaryMovement
+Group94.nodeLocation = 800,904
+Group94.routeFile = data/Braga.wkt
+Group94.routeType = 1
+Group94.nrofInterfaces = 1
+Group94.interface1 = btInterface
+
+Group95.groupID = s
+Group95.nrofHosts=1
+Group95.movementModel = StationaryMovement
+Group95.nodeLocation = 1693,497
+Group95.routeFile = data/Braga.wkt
+Group95.routeType = 1
+Group95.nrofInterfaces = 1
+Group95.interface1 = btInterface
+
+Group96.groupID = s
+Group96.nrofHosts=1
+Group96.movementModel = StationaryMovement
+Group96.nodeLocation = 1214,164
+Group96.routeFile = data/Braga.wkt
+Group96.routeType = 1
+Group96.nrofInterfaces = 1
+Group96.interface1 = btInterface
+
+Group97.groupID = s
+Group97.nrofHosts=1
+Group97.movementModel = StationaryMovement
+Group97.nodeLocation = 930,179
+Group97.routeFile = data/Braga.wkt
+Group97.routeType = 1
+Group97.nrofInterfaces = 1
+Group97.interface1 = btInterface
+
+Group98.groupID = s
+Group98.nrofHosts=1
+Group98.movementModel = StationaryMovement
+Group98.nodeLocation = 142,424
+Group98.routeFile = data/Braga.wkt
+Group98.routeType = 1
+Group98.nrofInterfaces = 1
+Group98.interface1 = btInterface
+
+Group99.groupID = s
+Group99.nrofHosts=1
+Group99.movementModel = StationaryMovement
+Group99.nodeLocation = 683,478
+Group99.routeFile = data/Braga.wkt
+Group99.routeType = 1
+Group99.nrofInterfaces = 1
+Group99.interface1 = btInterface
+
+Group100.groupID = s
+Group100.nrofHosts=1
+Group100.movementModel = StationaryMovement
+Group100.nodeLocation = 105,105
+Group100.routeFile = data/Braga.wkt
+Group100.routeType = 1
+Group100.nrofInterfaces = 1
+Group100.interface1 = btInterface
+
+
+# PORTAIS
+# TODO: MUDAR A POSICAO DOS PORTAIS
+
+Group101.groupID = p
+Group101.nrofHosts=1
+Group101.movementModel = StationaryMovement
+Group101.nodeLocation = 0,0
+Group101.routeFile = data/Braga.wkt
+Group101.routeType = 1
+Group101.nrofInterfaces = 1
+Group101.interface1 = btInterface
+
+Group102.groupID = p
+Group102.nrofHosts=1
+Group102.movementModel = StationaryMovement
+Group102.nodeLocation = 0,0
+Group102.routeFile = data/Braga.wkt
+Group102.routeType = 1
+Group102.nrofInterfaces = 1
+Group102.interface1 = btInterface
+
+Group103.groupID = p
+Group103.nrofHosts=1
+Group103.movementModel = StationaryMovement
+Group103.nodeLocation = 0,0
+Group103.routeFile = data/Braga.wkt
+Group103.routeType = 1
+Group103.nrofInterfaces = 1
+Group103.interface1 = btInterface
+
+Group104.groupID = p
+Group104.nrofHosts=1
+Group104.movementModel = StationaryMovement
+Group104.nodeLocation = 0,0
+Group104.routeFile = data/Braga.wkt
+Group104.routeType = 1
+Group104.nrofInterfaces = 1
+Group104.interface1 = btInterface
+
+Group105.groupID = p
+Group105.nrofHosts=1
+Group105.movementModel = StationaryMovement
+Group105.nodeLocation = 0,0
+Group105.routeFile = data/Braga.wkt
+Group105.routeType = 1
+Group105.nrofInterfaces = 1
+Group105.interface1 = btInterface
+
+
+# CARROS
+
+# groupID : Group's identifier. Used as the prefix of host names
+Group106.groupID = c
+# bufferSize: The default buffer size for all the nodes.
+Group106.bufferSize = 50M
+# movementModel: movement model of the hosts (valid class name from #movement package)
+Group106.movementModel =CarMovement
+# routeFile: route's file path - for MapRouteMovement 
+Group106.routeFile = data/Braga.wkt
+Group106.routeType = 1
+# nrofHosts: number of hosts in the group
+# TODO: Analisar Numero de Carros
+Group106.nrofHosts = 105
+# nrofInterfaces: Number of interfaces per host 
+Group106.nrofInterfaces = 1
+# Type of interface
+Group106.interface1 = btInterface
+
+
+
+## Message creation parameters
+# How many event generators
+Events.nrof = 1
+# Class of the first event generator
+Events1.class = MessageEventGenerator
+# (following settings are specific for the MessageEventGenerator class)
+# Creation interval in seconds (one new message every 60 seconds)
+Events1.interval = 60
+# Message sizes 10k
+Events1.size = 10k
+# range of message source/destination addresses
+Events1.hosts = 0,0
+# tohosts: range of message destination
+Events1.tohosts = 100,205
+# Message ID prefix
+Events1.prefix = M1
+
+
+Events2.class = MessageEventGenerator
+Events2.interval = 60
+Events2.size = 10k
+Events2.hosts = 1,1
+Events2.tohosts = 100,205
+Events2.prefix = M2
+
+Events3.class = MessageEventGenerator
+Events3.interval = 60
+Events3.size = 10k
+Events3.hosts = 2,2
+Events3.tohosts = 100,205
+Events3.prefix = M3
+
+Events4.class = MessageEventGenerator
+Events4.interval = 60
+Events4.size = 10k
+Events4.hosts = 3,3
+Events4.tohosts = 100,205
+Events4.prefix = M4
+
+Events5.class = MessageEventGenerator
+Events5.interval = 60
+Events5.size = 10k
+Events5.hosts = 4,4
+Events5.tohosts = 100,205
+Events5.prefix = M5
+
+Events6.class = MessageEventGenerator
+Events6.interval = 60
+Events6.size = 10k
+Events6.hosts = 5,5
+Events6.tohosts = 100,205
+Events6.prefix = M6
+
+Events7.class = MessageEventGenerator
+Events7.interval = 60
+Events7.size = 10k
+Events7.hosts = 6,6
+Events7.tohosts = 100,205
+Events7.prefix = M7
+
+Events8.class = MessageEventGenerator
+Events8.interval = 60
+Events8.size = 10k
+Events8.hosts = 7,7
+Events8.tohosts = 100,205
+Events8.prefix = M8
+
+Events9.class = MessageEventGenerator
+Events9.interval = 60
+Events9.size = 10k
+Events9.hosts = 8,8
+Events9.tohosts = 100,205
+Events9.prefix = M9
+
+Events10.class = MessageEventGenerator
+Events10.interval = 60
+Events10.size = 10k
+Events10.hosts = 9,9
+Events10.tohosts = 100,205
+Events10.prefix = M10
+
+Events11.class = MessageEventGenerator
+Events11.interval = 60
+Events11.size = 10k
+Events11.hosts = 10,10
+Events11.tohosts = 100,205
+Events11.prefix = M11
+
+Events12.class = MessageEventGenerator
+Events12.interval = 60
+Events12.size = 10k
+Events12.hosts = 11,11
+Events12.tohosts = 100,205
+Events12.prefix = M12
+
+Events13.class = MessageEventGenerator
+Events13.interval = 60
+Events13.size = 10k
+Events13.hosts = 12,12
+Events13.tohosts = 100,205
+Events13.prefix = M13
+
+Events14.class = MessageEventGenerator
+Events14.interval = 60
+Events14.size = 10k
+Events14.hosts = 13,13
+Events14.tohosts = 100,205
+Events14.prefix = M14
+
+Events15.class = MessageEventGenerator
+Events15.interval = 60
+Events15.size = 10k
+Events15.hosts = 14,14
+Events15.tohosts = 100,205
+Events15.prefix = M15
+
+Events16.class = MessageEventGenerator
+Events16.interval = 60
+Events16.size = 10k
+Events16.hosts = 15,15
+Events16.tohosts = 100,205
+Events16.prefix = M16
+
+Events17.class = MessageEventGenerator
+Events17.interval = 60
+Events17.size = 10k
+Events17.hosts = 16,16
+Events17.tohosts = 100,205
+Events17.prefix = M17
+
+Events18.class = MessageEventGenerator
+Events18.interval = 60
+Events18.size = 10k
+Events18.hosts = 17,17
+Events18.tohosts = 100,205
+Events18.prefix = M18
+
+Events19.class = MessageEventGenerator
+Events19.interval = 60
+Events19.size = 10k
+Events19.hosts = 18,18
+Events19.tohosts = 100,205
+Events19.prefix = M19
+
+Events20.class = MessageEventGenerator
+Events20.interval = 60
+Events20.size = 10k
+Events20.hosts = 19,19
+Events20.tohosts = 100,205
+Events20.prefix = M20
+
+Events21.class = MessageEventGenerator
+Events21.interval = 60
+Events21.size = 10k
+Events21.hosts = 20,20
+Events21.tohosts = 100,205
+Events21.prefix = M21
+
+Events22.class = MessageEventGenerator
+Events22.interval = 60
+Events22.size = 10k
+Events22.hosts = 21,21
+Events22.tohosts = 100,205
+Events22.prefix = M22
+
+Events23.class = MessageEventGenerator
+Events23.interval = 60
+Events23.size = 10k
+Events23.hosts = 22,22
+Events23.tohosts = 100,205
+Events23.prefix = M23
+
+Events24.class = MessageEventGenerator
+Events24.interval = 60
+Events24.size = 10k
+Events24.hosts = 23,23
+Events24.tohosts = 100,205
+Events24.prefix = M24
+
+Events25.class = MessageEventGenerator
+Events25.interval = 60
+Events25.size = 10k
+Events25.hosts = 24,24
+Events25.tohosts = 100,205
+Events25.prefix = M25
+
+Events26.class = MessageEventGenerator
+Events26.interval = 60
+Events26.size = 10k
+Events26.hosts = 25,25
+Events26.tohosts = 100,205
+Events26.prefix = M26
+
+Events27.class = MessageEventGenerator
+Events27.interval = 60
+Events27.size = 10k
+Events27.hosts = 26,26
+Events27.tohosts = 100,205
+Events27.prefix = M27
+
+Events28.class = MessageEventGenerator
+Events28.interval = 60
+Events28.size = 10k
+Events28.hosts = 27,27
+Events28.tohosts = 100,205
+Events28.prefix = M28
+
+Events29.class = MessageEventGenerator
+Events29.interval = 60
+Events29.size = 10k
+Events29.hosts = 28,28
+Events29.tohosts = 100,205
+Events29.prefix = M29
+
+Events30.class = MessageEventGenerator
+Events30.interval = 60
+Events30.size = 10k
+Events30.hosts = 29,29
+Events30.tohosts = 100,205
+Events30.prefix = M30
+
+Events31.class = MessageEventGenerator
+Events31.interval = 60
+Events31.size = 10k
+Events31.hosts = 30,30
+Events31.tohosts = 100,205
+Events31.prefix = M31
+
+Events32.class = MessageEventGenerator
+Events32.interval = 60
+Events32.size = 10k
+Events32.hosts = 31,31
+Events32.tohosts = 100,205
+Events32.prefix = M32
+
+Events33.class = MessageEventGenerator
+Events33.interval = 60
+Events33.size = 10k
+Events33.hosts = 32,32
+Events33.tohosts = 100,205
+Events33.prefix = M33
+
+Events34.class = MessageEventGenerator
+Events34.interval = 60
+Events34.size = 10k
+Events34.hosts = 33,33
+Events34.tohosts = 100,205
+Events34.prefix = M34
+
+Events35.class = MessageEventGenerator
+Events35.interval = 60
+Events35.size = 10k
+Events35.hosts = 34,34
+Events35.tohosts = 100,205
+Events35.prefix = M35
+
+Events36.class = MessageEventGenerator
+Events36.interval = 60
+Events36.size = 10k
+Events36.hosts = 35,35
+Events36.tohosts = 100,205
+Events36.prefix = M36
+
+Events37.class = MessageEventGenerator
+Events37.interval = 60
+Events37.size = 10k
+Events37.hosts = 36,36
+Events37.tohosts = 100,205
+Events37.prefix = M37
+
+Events38.class = MessageEventGenerator
+Events38.interval = 60
+Events38.size = 10k
+Events38.hosts = 37,37
+Events38.tohosts = 100,205
+Events38.prefix = M38
+
+Events39.class = MessageEventGenerator
+Events39.interval = 60
+Events39.size = 10k
+Events39.hosts = 38,38
+Events39.tohosts = 100,205
+Events39.prefix = M39
+
+Events40.class = MessageEventGenerator
+Events40.interval = 60
+Events40.size = 10k
+Events40.hosts = 39,39
+Events40.tohosts = 100,205
+Events40.prefix = M40
+
+Events41.class = MessageEventGenerator
+Events41.interval = 60
+Events41.size = 10k
+Events41.hosts = 40,40
+Events41.tohosts = 100,205
+Events41.prefix = M41
+
+Events42.class = MessageEventGenerator
+Events42.interval = 60
+Events42.size = 10k
+Events42.hosts = 41,41
+Events42.tohosts = 100,205
+Events42.prefix = M42
+
+Events43.class = MessageEventGenerator
+Events43.interval = 60
+Events43.size = 10k
+Events43.hosts = 42,42
+Events43.tohosts = 100,205
+Events43.prefix = M43
+
+Events44.class = MessageEventGenerator
+Events44.interval = 60
+Events44.size = 10k
+Events44.hosts = 43,43
+Events44.tohosts = 100,205
+Events44.prefix = M44
+
+Events45.class = MessageEventGenerator
+Events45.interval = 60
+Events45.size = 10k
+Events45.hosts = 44,44
+Events45.tohosts = 100,205
+Events45.prefix = M45
+
+Events46.class = MessageEventGenerator
+Events46.interval = 60
+Events46.size = 10k
+Events46.hosts = 45,45
+Events46.tohosts = 100,205
+Events46.prefix = M46
+
+Events47.class = MessageEventGenerator
+Events47.interval = 60
+Events47.size = 10k
+Events47.hosts = 46,46
+Events47.tohosts = 100,205
+Events47.prefix = M47
+
+Events48.class = MessageEventGenerator
+Events48.interval = 60
+Events48.size = 10k
+Events48.hosts = 47,47
+Events48.tohosts = 100,205
+Events48.prefix = M48
+
+Events49.class = MessageEventGenerator
+Events49.interval = 60
+Events49.size = 10k
+Events49.hosts = 48,48
+Events49.tohosts = 100,205
+Events49.prefix = M49
+
+Events50.class = MessageEventGenerator
+Events50.interval = 60
+Events50.size = 10k
+Events50.hosts = 49,49
+Events50.tohosts = 100,205
+Events50.prefix = M50
+
+Events51.class = MessageEventGenerator
+Events51.interval = 60
+Events51.size = 10k
+Events51.hosts = 50,50
+Events51.tohosts = 100,205
+Events51.prefix = M51
+
+Events52.class = MessageEventGenerator
+Events52.interval = 60
+Events52.size = 10k
+Events52.hosts = 51,51
+Events52.tohosts = 100,205
+Events52.prefix = M52
+
+Events53.class = MessageEventGenerator
+Events53.interval = 60
+Events53.size = 10k
+Events53.hosts = 52,52
+Events53.tohosts = 100,205
+Events53.prefix = M53
+
+Events54.class = MessageEventGenerator
+Events54.interval = 60
+Events54.size = 10k
+Events54.hosts = 53,53
+Events54.tohosts = 100,205
+Events54.prefix = M54
+
+Events55.class = MessageEventGenerator
+Events55.interval = 60
+Events55.size = 10k
+Events55.hosts = 54,54
+Events55.tohosts = 100,205
+Events55.prefix = M55
+
+Events56.class = MessageEventGenerator
+Events56.interval = 60
+Events56.size = 10k
+Events56.hosts = 55,55
+Events56.tohosts = 100,205
+Events56.prefix = M56
+
+Events57.class = MessageEventGenerator
+Events57.interval = 60
+Events57.size = 10k
+Events57.hosts = 56,56
+Events57.tohosts = 100,205
+Events57.prefix = M57
+
+Events58.class = MessageEventGenerator
+Events58.interval = 60
+Events58.size = 10k
+Events58.hosts = 57,57
+Events58.tohosts = 100,205
+Events58.prefix = M58
+
+Events59.class = MessageEventGenerator
+Events59.interval = 60
+Events59.size = 10k
+Events59.hosts = 58,58
+Events59.tohosts = 100,205
+Events59.prefix = M59
+
+Events60.class = MessageEventGenerator
+Events60.interval = 60
+Events60.size = 10k
+Events60.hosts = 59,59
+Events60.tohosts = 100,205
+Events60.prefix = M60
+
+Events61.class = MessageEventGenerator
+Events61.interval = 60
+Events61.size = 10k
+Events61.hosts = 60,60
+Events61.tohosts = 100,205
+Events61.prefix = M61
+
+Events62.class = MessageEventGenerator
+Events62.interval = 60
+Events62.size = 10k
+Events62.hosts = 61,61
+Events62.tohosts = 100,205
+Events62.prefix = M62
+
+Events63.class = MessageEventGenerator
+Events63.interval = 60
+Events63.size = 10k
+Events63.hosts = 62,62
+Events63.tohosts = 100,205
+Events63.prefix = M63
+
+Events64.class = MessageEventGenerator
+Events64.interval = 60
+Events64.size = 10k
+Events64.hosts = 63,63
+Events64.tohosts = 100,205
+Events64.prefix = M64
+
+Events65.class = MessageEventGenerator
+Events65.interval = 60
+Events65.size = 10k
+Events65.hosts = 64,64
+Events65.tohosts = 100,205
+Events65.prefix = M65
+
+Events66.class = MessageEventGenerator
+Events66.interval = 60
+Events66.size = 10k
+Events66.hosts = 65,65
+Events66.tohosts = 100,205
+Events66.prefix = M66
+
+Events67.class = MessageEventGenerator
+Events67.interval = 60
+Events67.size = 10k
+Events67.hosts = 66,66
+Events67.tohosts = 100,205
+Events67.prefix = M67
+
+Events68.class = MessageEventGenerator
+Events68.interval = 60
+Events68.size = 10k
+Events68.hosts = 67,67
+Events68.tohosts = 100,205
+Events68.prefix = M68
+
+Events69.class = MessageEventGenerator
+Events69.interval = 60
+Events69.size = 10k
+Events69.hosts = 68,68
+Events69.tohosts = 100,205
+Events69.prefix = M69
+
+Events70.class = MessageEventGenerator
+Events70.interval = 60
+Events70.size = 10k
+Events70.hosts = 69,69
+Events70.tohosts = 100,205
+Events70.prefix = M70
+
+Events71.class = MessageEventGenerator
+Events71.interval = 60
+Events71.size = 10k
+Events71.hosts = 70,70
+Events71.tohosts = 100,205
+Events71.prefix = M71
+
+Events72.class = MessageEventGenerator
+Events72.interval = 60
+Events72.size = 10k
+Events72.hosts = 71,71
+Events72.tohosts = 100,205
+Events72.prefix = M72
+
+Events73.class = MessageEventGenerator
+Events73.interval = 60
+Events73.size = 10k
+Events73.hosts = 72,72
+Events73.tohosts = 100,205
+Events73.prefix = M73
+
+Events74.class = MessageEventGenerator
+Events74.interval = 60
+Events74.size = 10k
+Events74.hosts = 73,73
+Events74.tohosts = 100,205
+Events74.prefix = M74
+
+Events75.class = MessageEventGenerator
+Events75.interval = 60
+Events75.size = 10k
+Events75.hosts = 74,74
+Events75.tohosts = 100,205
+Events75.prefix = M75
+
+Events76.class = MessageEventGenerator
+Events76.interval = 60
+Events76.size = 10k
+Events76.hosts = 75,75
+Events76.tohosts = 100,205
+Events76.prefix = M76
+
+Events77.class = MessageEventGenerator
+Events77.interval = 60
+Events77.size = 10k
+Events77.hosts = 76,76
+Events77.tohosts = 100,205
+Events77.prefix = M77
+
+Events78.class = MessageEventGenerator
+Events78.interval = 60
+Events78.size = 10k
+Events78.hosts = 77,77
+Events78.tohosts = 100,205
+Events78.prefix = M78
+
+Events79.class = MessageEventGenerator
+Events79.interval = 60
+Events79.size = 10k
+Events79.hosts = 78,78
+Events79.tohosts = 100,205
+Events79.prefix = M79
+
+Events80.class = MessageEventGenerator
+Events80.interval = 60
+Events80.size = 10k
+Events80.hosts = 79,79
+Events80.tohosts = 100,205
+Events80.prefix = M80
+
+Events81.class = MessageEventGenerator
+Events81.interval = 60
+Events81.size = 10k
+Events81.hosts = 80,80
+Events81.tohosts = 100,205
+Events81.prefix = M81
+
+Events82.class = MessageEventGenerator
+Events82.interval = 60
+Events82.size = 10k
+Events82.hosts = 81,81
+Events82.tohosts = 100,205
+Events82.prefix = M82
+
+Events83.class = MessageEventGenerator
+Events83.interval = 60
+Events83.size = 10k
+Events83.hosts = 82,82
+Events83.tohosts = 100,205
+Events83.prefix = M83
+
+Events84.class = MessageEventGenerator
+Events84.interval = 60
+Events84.size = 10k
+Events84.hosts = 83,83
+Events84.tohosts = 100,205
+Events84.prefix = M84
+
+Events85.class = MessageEventGenerator
+Events85.interval = 60
+Events85.size = 10k
+Events85.hosts = 84,84
+Events85.tohosts = 100,205
+Events85.prefix = M85
+
+Events86.class = MessageEventGenerator
+Events86.interval = 60
+Events86.size = 10k
+Events86.hosts = 85,85
+Events86.tohosts = 100,205
+Events86.prefix = M86
+
+Events87.class = MessageEventGenerator
+Events87.interval = 60
+Events87.size = 10k
+Events87.hosts = 86,86
+Events87.tohosts = 100,205
+Events87.prefix = M87
+
+Events88.class = MessageEventGenerator
+Events88.interval = 60
+Events88.size = 10k
+Events88.hosts = 87,87
+Events88.tohosts = 100,205
+Events88.prefix = M88
+
+Events89.class = MessageEventGenerator
+Events89.interval = 60
+Events89.size = 10k
+Events89.hosts = 88,88
+Events89.tohosts = 100,205
+Events89.prefix = M89
+
+Events90.class = MessageEventGenerator
+Events90.interval = 60
+Events90.size = 10k
+Events90.hosts = 89,89
+Events90.tohosts = 100,205
+Events90.prefix = M90
+
+Events91.class = MessageEventGenerator
+Events91.interval = 60
+Events91.size = 10k
+Events91.hosts = 90,90
+Events91.tohosts = 100,205
+Events91.prefix = M91
+
+Events92.class = MessageEventGenerator
+Events92.interval = 60
+Events92.size = 10k
+Events92.hosts = 91,91
+Events92.tohosts = 100,205
+Events92.prefix = M92
+
+Events93.class = MessageEventGenerator
+Events93.interval = 60
+Events93.size = 10k
+Events93.hosts = 92,92
+Events93.tohosts = 100,205
+Events93.prefix = M93
+
+Events94.class = MessageEventGenerator
+Events94.interval = 60
+Events94.size = 10k
+Events94.hosts = 93,93
+Events94.tohosts = 100,205
+Events94.prefix = M94
+
+Events95.class = MessageEventGenerator
+Events95.interval = 60
+Events95.size = 10k
+Events95.hosts = 94,94
+Events95.tohosts = 100,205
+Events95.prefix = M95
+
+Events96.class = MessageEventGenerator
+Events96.interval = 60
+Events96.size = 10k
+Events96.hosts = 95,95
+Events96.tohosts = 100,205
+Events96.prefix = M96
+
+Events97.class = MessageEventGenerator
+Events97.interval = 60
+Events97.size = 10k
+Events97.hosts = 96,96
+Events97.tohosts = 100,205
+Events97.prefix = M97
+
+Events98.class = MessageEventGenerator
+Events98.interval = 60
+Events98.size = 10k
+Events98.hosts = 97,97
+Events98.tohosts = 100,205
+Events98.prefix = M98
+
+Events99.class = MessageEventGenerator
+Events99.interval = 60
+Events99.size = 10k
+Events99.hosts = 98,98
+Events99.tohosts = 100,205
+Events99.prefix = M99
+
+Events100.class = MessageEventGenerator
+Events100.interval = 60
+Events100.size = 10k
+Events100.hosts = 99,99
+Events100.tohosts = 100,205
+Events100.prefix = M100
+
+## Movement model settings
+# seed for movement models' pseudo random number generator (default = 0)
+MovementModel.rngSeed = 2
+# World's size for Movement Models without implicit size (width, height; meters)
+
+# TODO: mudar para o tamanho do nosso mapa de braga
+# Largura 2700m Altura 2100m
+MovementModel.worldSize = 2700, 2100
+# How long time to move hosts in the world before real simulation
+MovementModel.warmup = 1000
+
+## Map based movement -movement model specific settings
+MapBasedMovement.nrofMapFiles = 1
+
+MapBasedMovement.mapFile1 = data/Braga.wkt
+
+## Reports - all report names have to be valid report classes
+# how many reports to load
+Report.nrofReports = 6
+# length of the warm up period (simulated seconds)
+Report.warmup = 0
+# default directory of reports (can be overridden per Report with output setting)
+Report.reportDir = reports/
+# Report classes to load
+Report.report1 = MessageStatsReport
+Report.report2 = MessageGraphvizReport
+Report.report3 = MessageReport
+Report.report4 = CreatedMessagesReport
+Report.report5 = EventLogReport
+Report.report6 = DeliveredMessagesReport
+
+
+## Optimization settings -- these affect the speed of the simulation
+## see World class for details.
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
+
+
+## GUI settings
+
+# GUI underlay image settings
+# TODO: sacar uma imagem de braga para meter aqui
+GUI.UnderlayImage.fileName = data/Braga.png
+# Image offset in pixels (x, y)
+GUI.UnderlayImage.offset = 64, 20
+# Scaling factor for the image
+GUI.UnderlayImage.scale = 4.75
+# Image rotation (radians)
+GUI.UnderlayImage.rotate = 0
+
+# how many events to show in the log panel (default = 30)
+GUI.EventLogPanel.nrofEvents = 100
+# Regular Expression log filter (see Pattern-class from the Java API for RE-matching details)
+#GUI.EventLogPanel.REfilter = .*p[1-9]<->p[1-9]$
+
